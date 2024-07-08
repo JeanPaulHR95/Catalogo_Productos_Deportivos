@@ -1,10 +1,5 @@
 from flask import Flask
-from routes.RegistrarUsuario import usuario
-from routes.RealizarTest import respuestas
-from routes.IniciarSesion import sesion
-from routes.RealizarVigilancia import vigilancia
-from routes.VisualizarMapaCalor import mapacalor
-from routes.EvaluarTest import evaluar
+from routes.ObtenerProductos import producto
 from Config import DATABASE_CONNECTION_URI
 from flask_cors import CORS
 from db import db
@@ -28,12 +23,7 @@ app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
 db.init_app(app)
 ma.init_app(app)
-app.register_blueprint(usuario)
-app.register_blueprint(respuestas)
-app.register_blueprint(sesion)
-app.register_blueprint(vigilancia)
-app.register_blueprint(mapacalor)
-app.register_blueprint(evaluar)
+app.register_blueprint(producto)
 
 with app.app_context():
     db.create_all()
